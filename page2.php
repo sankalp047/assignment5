@@ -5,6 +5,7 @@
             $current = file_get_contents($file);
             if(isset($_POST["user_string"])){
                 $data = $_POST["user_string"];
+                $nchar = $_POST["nchar"];
              }
              
            // $input = $_POST['user_string'];
@@ -27,8 +28,6 @@
  <html>
  
     <body>
-            <h2>Sankalp Sandeep Singh</h2>
-            <h2>1001964065</h2>
         <h2>Find data in the text file</h2>
             <h3 id = "space"><h3>
             <h3>Name :-  </h3><h3 id="indata"></h3>
@@ -38,8 +37,9 @@
             </textarea>
         <script>
             var data = <?=json_encode($current)?>;
+            var nchar = <?=json_encode($nchar)?>;
             data = data.replace(/[^\w\s]|_/g, "").replace(/\s+/g, " ");
-
+             
             data = data.toLowerCase();
 
             var stopWords = [
@@ -60,9 +60,11 @@
                     .replace(/\s{2,}/g, ' ');
                 var inputword = <?=json_encode($data)?>;
                 var myWords = data.split(" ");
+                
+                myWords.length=<?=json_encode($nchar)?>
+                //var count = myWords.length;
 
-                var count = myWords.length;
-                document.getElementById("qwe").innerHTML = count;
+                document.getElementById("qwe").innerHTML = myWords.length-1;
                 document.getElementById("txtar").innerHTML = myWords;
                 
                 for (var i = 1; i < myWords.length; i++) {
