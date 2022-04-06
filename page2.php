@@ -3,6 +3,10 @@
             $name = "Sankalp Singh";
             $file = "shortstory.txt";
             $current = file_get_contents($file);
+            if(isset($_POST["user_string"])){
+                $data = $_POST["user_string"];
+             }
+             
            // $input = $_POST['user_string'];
            /*  $c=[',',':',';','"'];
             $d=['','','',''];
@@ -21,8 +25,15 @@
             ?>
            
  <html>
+ 
     <body>
-        <h1> DEMO </h1>
+        <h2>Find data in the text file</h2>
+            <h3 id = "space"><h3>
+            <h3>Name :-  </h3><h3 id="indata"></h3>
+            <h3>Index:-  </h3><h3 id ="indexof"></h3>
+            <h3>Total numner of characters : -  <h3> <h3 id ="qwe"></h3>
+            <textarea id="txtar" " rows="4" cols="50">
+            </textarea>
         <script>
             var data = <?=json_encode($current)?>;
             data = data.replace(/[^\w\s]|_/g, "").replace(/\s+/g, " ");
@@ -30,7 +41,7 @@
             data = data.toLowerCase();
 
             var stopWords = [
-                "the","to","a" , "about" , "above" , "after" , "again" , "against" , "all" , "am" ,
+                "the","to","a" , "about" , "above" , "after" , "again" , "against" , "all" , "am" ,"were",
                  "an" , "and" , "any" , "are" , "aren't" , "as" , 
                  "at" , "be" , "because" , "been" , "before" , "being" , "below" , "between" , 
                  "both" , "but" , "by" , "can't" , "cannot" , "could" , "couldn't" , "did" , "didn't" , "do" ,
@@ -39,20 +50,52 @@
                   "he'll" , "he's" , "her" , "here" , "here's" , "hers" , "herself" , "him" , "himself" , "his" , 
                   "how" , "how's" , "i" , "i'd" , "i'll" , "i'm" , "i've" , "if" , "in" , "into" , "is" , "isn't" ,
                    "it" , "it's" , "its" , "itself" , "let's" , "me" , "more" , "most" , "mustn't" , "my" , 
-                   "myself" , "no" , "nor" , "not" , "of" , "off" , "on" , "once" , "only" , "or" , "other" , "ought" , "our" , "ours"
+                   "myself" , "no" , "nor" , "not" , "of" , "off" , "on" , "once" , "only" , "or" , "other" , "ought" , 
+                   "our" , "ours"
             ]
             var expStr = stopWords.join("|");
                 data = data.replace(new RegExp('\\b(' + expStr + ')\\b', 'gi'), ' ')
                     .replace(/\s{2,}/g, ' ');
-
+                var inputword = <?=json_encode($data)?>;
                 var myWords = data.split(" ");
-                var output = myWords.includes("book");
+
+                var count = myWords.length;
+                document.getElementById("qwe").innerHTML = count;
+                document.getElementById("txtar").innerHTML = myWords;
+                
+                for (var i = 1; i < myWords.length; i++) {
+                  // myWords.toString();
+                  i.toString();
+                   var arraytwo = [];
+                    if(i===inputword){
+                    arraytwo[i];
+                    }
+                    else{
+                        console.log("Not found in array");
+                    }
+                    
+                }
+                console.log(arraytwo);
+                console.log(myWords);
+                //console.log(myWords);
+                var output = myWords.includes(<?=json_encode($data)?>);
+                
+                
+                
+                
+                
+                
                 if(output) {
-                    console.log("found");
-                    console.log(myWords.indexOf("book"));
+                    alert("found");
+                  // document.getElementById("space").innerHTML = "Data found in the Text File\n Word name:-";
+                   document.getElementById("indata").innerHTML = <?=json_encode($data)?>;
+                   
+                var indexEncode = myWords.indexOf(<?=json_encode($data)?>);
+                
+                document.getElementById("indexof").innerHTML = indexEncode;
                 }
                 else{
-                    console.log("not found");
+                    alert("not found");
                 }
            </script>
     </body>    
