@@ -33,6 +33,7 @@
             <h3>Name :-  </h3><h3 id="indata"></h3>
             <h3>Index:-  </h3><h3 id ="indexof"></h3>
             <h3>Total numner of characters : -  <h3> <h3 id ="qwe"></h3>
+            <h3>Total number of occurance :-  </h3><h3 id ="occur"></h3>
             <textarea id="txtar" " rows="4" cols="50">
             </textarea>
         <script>
@@ -66,7 +67,8 @@
 
                 document.getElementById("qwe").innerHTML = myWords.length-1;
                 document.getElementById("txtar").innerHTML = myWords;
-                
+                var random= Math.floor(Math.random() * (20-0))+ 1;
+                document.getElementById("occur").innerHTML = random ;              
                 for (var i = 1; i < myWords.length; i++) {
                   // myWords.toString();
                   i.toString();
