@@ -27,7 +27,9 @@
            
  <html>
  
-    <body>
+         <h2>Sankalp Sandeep Singh</h2>
+         <h2>1001964065</h2>
+         <body>
         <h2>Find data in the text file</h2>
             <h3 id = "space"><h3>
             <h3>Name :-  </h3><h3 id="indata"></h3>
